@@ -22,8 +22,7 @@ public class Movie {
     public Movie() {
     }
 
-    public Movie(int id, String title, float voteAverage, String overview, String releaseDate) {
-        this.id = id;
+    public Movie(String title, float voteAverage, String overview, String releaseDate) {
         this.title = title;
         this.voteAverage = voteAverage;
         this.overview = overview;
