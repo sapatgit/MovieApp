@@ -13,7 +13,7 @@ public class Movie {
     @Column(name="title")
     private String title;
     @JsonProperty(value = "vote_average")
-    private float voteAverage;
+    private double voteAverage;
     @Column(name = "overview")
     private String overview;
     @JsonProperty(value = "release_date")
@@ -22,8 +22,7 @@ public class Movie {
     public Movie() {
     }
 
-    public Movie(int id, String title, float voteAverage, String overview, String releaseDate) {
-        this.id = id;
+    public Movie(String title, double voteAverage, String overview, String releaseDate) {
         this.title = title;
         this.voteAverage = voteAverage;
         this.overview = overview;
@@ -46,11 +45,11 @@ public class Movie {
         this.title = title;
     }
 
-    public float getVoteAverage() {
+    public double getVoteAverage() {
         return voteAverage;
     }
 
-    public void setVoteAverage(float voteAverage) {
+    public void setVoteAverage(double voteAverage) {
         this.voteAverage = voteAverage;
     }
 
