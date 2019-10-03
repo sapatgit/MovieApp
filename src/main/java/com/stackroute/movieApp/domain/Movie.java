@@ -16,15 +16,18 @@ public class Movie {
     private float voteAverage;
     @Column(name = "overview")
     private String overview;
+    @JsonProperty(value = "release_date")
+    private String releaseDate;
 
     public Movie() {
     }
 
-    public Movie(int id, String title, float voteAverage, String overview, String release_date) {
+    public Movie(int id, String title, float voteAverage, String overview, String releaseDate) {
         this.id = id;
         this.title = title;
         this.voteAverage = voteAverage;
         this.overview = overview;
+        this.releaseDate = releaseDate;
     }
 
     public int getId() {
@@ -59,6 +62,14 @@ public class Movie {
         this.overview = overview;
     }
 
+    public String getReleaseDate() {
+        return releaseDate;
+    }
+
+    public void setReleaseDate(String releaseDate) {
+        this.releaseDate = releaseDate;
+    }
+
     @Override
     public String toString() {
         return "Movie{" +
@@ -66,6 +77,7 @@ public class Movie {
                 ", title='" + title + '\'' +
                 ", vote_average=" + voteAverage +
                 ", overview='" + overview + '\'' +
+                ", release_date" + releaseDate + '\'' +
                 '}';
     }
 }
