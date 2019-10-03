@@ -1,4 +1,4 @@
-package com.stackroute.movieApp.errors;
+package com.stackroute.movieApp.exceptions;
 
 import org.springframework.http.HttpStatus;
 
