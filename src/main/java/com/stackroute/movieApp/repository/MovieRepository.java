@@ -9,9 +9,6 @@ import java.util.List;
 
 @Repository
 public interface MovieRepository extends JpaRepository<Movie, Integer> {
-    @Query("from Movie where title=?1")
+    @Query("from Movie where title = ?1")
     public List<Movie> findMovieByName(String title);
-
-    @Query("from Movie where title=?1 and releaseDate=?2")
-    public Movie findDuplicate(String title, String releaseDate);
 }

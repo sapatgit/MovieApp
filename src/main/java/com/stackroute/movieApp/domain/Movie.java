@@ -23,6 +23,7 @@ public class Movie {
     }
 
     public Movie(String title, double voteAverage, String overview, String releaseDate) {
+        this.id = id;
         this.title = title;
         this.voteAverage = voteAverage;
         this.overview = overview;
