@@ -51,7 +51,7 @@ public class MovieController {
         return responseEntity;
     }
 
-    @GetMapping("/movie/{id}")
+    @GetMapping("/movie/{id:[\\d]+}")
     public ResponseEntity<?> getMovie(@PathVariable int id) {
         ResponseEntity responseEntity;
         try{
@@ -59,6 +59,18 @@ public class MovieController {
         } catch (Exception e) {
             Errors errors = new Errors(HttpStatus.NOT_FOUND, e.getMessage());
             responseEntity = new ResponseEntity<Errors> (errors, HttpStatus.NOT_FOUND);
+        }
+        return responseEntity;
+    }
+
+    @GetMapping("/movie/{title:[a-zA-Z-_]+}")
+    public ResponseEntity<?> getMovieByName(@PathVariable String title) {
+        ResponseEntity responseEntity;
+        try{
+            responseEntity = new ResponseEntity<List<Movie>> (movieService.getMovieByName(title), HttpStatus.OK);
+        } catch (Exception e) {
+            Errors errors = new Errors(HttpStatus.NOT_FOUND, e.getMessage());
+            responseEntity= new ResponseEntity<Errors> (errors, HttpStatus.NOT_FOUND);
         }
         return responseEntity;
     }

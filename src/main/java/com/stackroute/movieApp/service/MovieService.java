@@ -9,5 +9,6 @@ public interface MovieService {
     public Movie updateMovie(Movie movie);
     public Movie deleteMovie(int id);
     public Movie getMovie(int id);
+    public List<Movie> getMovieByName(String title);
     public List<Movie> getMovies();
 }
