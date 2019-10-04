@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-@Profile("first")
+@Primary
 public class MovieServiceImpl implements MovieService {
     private MovieRepository movieRepository;
 
