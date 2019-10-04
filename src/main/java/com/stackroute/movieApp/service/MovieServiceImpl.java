@@ -6,12 +6,13 @@ import com.stackroute.movieApp.exceptions.MovieNotFoundException;
 import com.stackroute.movieApp.repository.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-@Primary
+@Profile("first")
 public class MovieServiceImpl implements MovieService {
     private MovieRepository movieRepository;
 
