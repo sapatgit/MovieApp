@@ -1,29 +1,30 @@
 package com.stackroute.movieApp.exceptions;
 
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 
 public class Errors {
-    private HttpStatus code;
-    private String message;
+    private HttpStatus status;
+    private String body;
 
-    public Errors(HttpStatus code, String message) {
-        this.code = code;
-        this.message = message;
+    public Errors(HttpStatus status, String body) {
+        this.status = status;
+        this.body = body;
     }
 
-    public HttpStatus getCode() {
-        return code;
+    public HttpStatus getStatus() {
+        return status;
     }
 
-    public void setCode(HttpStatus code) {
-        this.code = code;
+    public void setStatus(HttpStatus status) {
+        this.status = status;
     }
 
-    public String getMessage() {
-        return message;
+    public String getBody() {
+        return body;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setBody(String body) {
+        this.body = body;
     }
 }

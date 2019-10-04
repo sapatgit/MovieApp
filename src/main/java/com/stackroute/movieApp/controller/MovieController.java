@@ -23,26 +23,16 @@ public class MovieController {
     }
 
     @PostMapping("/movie")
-    public ResponseEntity<?> addMovie(@RequestBody Movie movie) {
+    public ResponseEntity<?> addMovie(@RequestBody Movie movie) throws MovieAlreadyExistsException{
         ResponseEntity responseEntity;
-        try {
-            responseEntity = new ResponseEntity<Movie> (movieService.saveMovie(movie), HttpStatus.CREATED);
-        } catch (MovieAlreadyExistsException e) {
-            Errors errors = new Errors(HttpStatus.CONFLICT, e.getMessage());
-            responseEntity = new ResponseEntity<Errors> (errors, HttpStatus.CONFLICT);
-        }
+        responseEntity = new ResponseEntity<Movie> (movieService.saveMovie(movie), HttpStatus.CREATED);
         return responseEntity;
     }
 
     @DeleteMapping("/movie/{id}")
-    public ResponseEntity<?> deleteMovie(@PathVariable("id") int id) {
+    public ResponseEntity<?> deleteMovie(@PathVariable("id") int id) throws MovieNotFoundException{
         ResponseEntity responseEntity;
-        try {
-            responseEntity = new ResponseEntity<Movie> (movieService.deleteMovie(id), HttpStatus.NO_CONTENT);
-        } catch (MovieNotFoundException e) {
-            Errors errors = new Errors(HttpStatus.NOT_FOUND, e.getMessage());
-            responseEntity = new ResponseEntity<Errors> (errors, HttpStatus.NOT_FOUND);
-        }
+        responseEntity = new ResponseEntity<Movie> (movieService.deleteMovie(id), HttpStatus.NO_CONTENT);
         return responseEntity;
     }
 
@@ -54,14 +44,9 @@ public class MovieController {
     }
 
     @GetMapping("/movie/{id:[\\d]+}")
-    public ResponseEntity<?> getMovie(@PathVariable int id) {
+    public ResponseEntity<?> getMovie(@PathVariable int id) throws MovieNotFoundException{
         ResponseEntity responseEntity;
-        try{
-            responseEntity = new ResponseEntity<Movie> (movieService.getMovie(id), HttpStatus.OK);
-        } catch (MovieNotFoundException e) {
-            Errors errors = new Errors(HttpStatus.NOT_FOUND, e.getMessage());
-            responseEntity = new ResponseEntity<Errors> (errors, HttpStatus.NOT_FOUND);
-        }
+        responseEntity = new ResponseEntity<Movie> (movieService.getMovie(id), HttpStatus.OK);
         return responseEntity;
     }
 
@@ -73,17 +58,9 @@ public class MovieController {
     }
 
     @PutMapping("/movie")
-    public ResponseEntity<?> updateMovie(@RequestBody Movie movie) {
+    public ResponseEntity<?> updateMovie(@RequestBody Movie movie) throws MovieNotFoundException, MovieAlreadyExistsException{
         ResponseEntity responseEntity;
-        try{
-            responseEntity = new ResponseEntity<Movie> (movieService.updateMovie(movie), HttpStatus.OK);
-        } catch (MovieNotFoundException e) {
-            Errors errors = new Errors(HttpStatus.NOT_FOUND, e.getMessage());
-            responseEntity = new ResponseEntity<Errors> (errors, HttpStatus.NOT_FOUND);
-        } catch (MovieAlreadyExistsException e) {
-            Errors errors = new Errors(HttpStatus.CONFLICT, e.getMessage());
-            responseEntity = new ResponseEntity<Errors> (errors, HttpStatus.CONFLICT);
-        }
+        responseEntity = new ResponseEntity<Movie> (movieService.updateMovie(movie), HttpStatus.OK);
         return responseEntity;
     }
 }
