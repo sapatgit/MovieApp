@@ -45,7 +45,7 @@ public class MovieServiceImpl implements MovieService {
                 toUpdate.setReleaseDate(movie.getReleaseDate());
             if(movieRepository.findDuplicate(toUpdate.getTitle(), toUpdate.getReleaseDate()) != null) {
                 throw new MovieAlreadyExistsException("Movie with title: "+toUpdate.getTitle()+
-                    " and release_date: "+toUpdate.getReleaseDate()+" already exits!");
+                        " and release_date: "+toUpdate.getReleaseDate()+" already exits!");
             } else {
                 movieRepository.save(toUpdate);
                 return toUpdate;
