@@ -5,18 +5,18 @@ import com.stackroute.movieApp.exceptions.MovieAlreadyExistsException;
 import com.stackroute.movieApp.exceptions.MovieNotFoundException;
 import com.stackroute.movieApp.repository.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Primary;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-@Primary
-public class MovieServiceImpl implements MovieService {
+@Qualifier(value="abcd")
+public class MovieDummyServiceImpl implements MovieService{
     private MovieRepository movieRepository;
 
     @Autowired
-    public MovieServiceImpl(MovieRepository movieRepository) {
+    public MovieDummyServiceImpl(MovieRepository movieRepository) {
         this.movieRepository = movieRepository;
     }
 
@@ -47,7 +47,7 @@ public class MovieServiceImpl implements MovieService {
                 toUpdate.setReleaseDate(movie.getReleaseDate());
             if(movieRepository.findDuplicate(toUpdate.getTitle(), toUpdate.getReleaseDate()) != null) {
                 throw new MovieAlreadyExistsException("Movie with title: "+toUpdate.getTitle()+
-                    " and release_date: "+toUpdate.getReleaseDate()+" already exits!");
+                        " and release_date: "+toUpdate.getReleaseDate()+" already exits!");
             } else {
                 movieRepository.save(toUpdate);
                 return toUpdate;

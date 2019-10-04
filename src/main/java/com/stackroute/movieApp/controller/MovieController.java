@@ -6,6 +6,7 @@ import com.stackroute.movieApp.exceptions.MovieAlreadyExistsException;
 import com.stackroute.movieApp.exceptions.MovieNotFoundException;
 import com.stackroute.movieApp.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
