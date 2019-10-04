@@ -23,10 +23,12 @@ public class Movie {
     @JsonProperty(value = "release_date")
     private String releaseDate;
 
+
     public Movie(String title, float voteAverage, String overview, String releaseDate) {
         this.title = title;
         this.voteAverage = voteAverage;
         this.overview = overview;
         this.releaseDate = releaseDate;
     }
+    
 }
