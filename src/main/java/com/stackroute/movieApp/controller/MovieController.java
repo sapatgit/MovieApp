@@ -36,7 +36,7 @@ public class MovieController {
     public ResponseEntity<?> deleteMovie(@PathVariable("id") int id) {
         ResponseEntity responseEntity;
         try {
-            responseEntity = new ResponseEntity<Movie> (movieService.deleteMovie(id), HttpStatus.NO_CONTENT);
+            responseEntity = new ResponseEntity<Movie> (movieService.deleteMovie(id), HttpStatus.OK);
         } catch (Exception e) {
             Errors errors = new Errors(HttpStatus.NOT_FOUND, e.getMessage());
             responseEntity = new ResponseEntity<Errors> (errors, HttpStatus.NOT_FOUND);

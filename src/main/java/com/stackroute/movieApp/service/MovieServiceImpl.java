@@ -24,7 +24,7 @@ public class MovieServiceImpl implements MovieService {
 
     @Override
     public Movie updateMovie(Movie movie) {
-        Movie toUpdate = movieRepository.getOne(movie.getId());
+        Movie toUpdate = movieRepository.findById(movie.getId()).get();
         if(movie.getTitle()!=null)
             toUpdate.setTitle(movie.getTitle());
         if(movie.getOverview()!=null)
@@ -37,8 +37,10 @@ public class MovieServiceImpl implements MovieService {
 
     @Override
     public Movie deleteMovie(int id) {
+        Movie movie = movieRepository.findById(id).get();
+        System.out.println(movie);
         movieRepository.deleteById(id);
-        return getMovie(id);
+        return movie;
     }
 
     @Override
